@@ -16,7 +16,12 @@ public class spotInput : MonoBehaviour {
 	{
 		RaycastHit hit;
 		Physics.Raycast (gameObject.transform.position, gameObject.transform.TransformDirection (Vector3.forward), out hit, 1000.0f);
-		Debug.Log (hit.collider.gameObject.name);
+		if (hit.collider.tag == "Button") {
+			var button = hit.collider.GetComponent<Button> ();
+			if (button) {
+				button.isClicked ();
+			}
+		}
 	}
 
 	// Update is called once per frame
