@@ -21,8 +21,7 @@ public class SceneManager : MonoBehaviour {
     [HideInInspector]
     public GameMode gameMode;
 
-    [HideInInspector]
-    public int unlocked_map = 0;
+    public int unlocked_map = 1;
 
     [HideInInspector]
     public int  cur_map;
