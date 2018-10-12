@@ -4,12 +4,31 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour {
 
+
+    public enum GameMode{
+        gm_new,
+        gm_continue,
+        gm_teser        
+    }
+
     [SerializeField]
     private CameraManager _camera;
 
 
     [SerializeField]
     private List<Scene> _scenes = new List<Scene>();
+
+    [HideInInspector]
+    public GameMode gameMode;
+
+    [HideInInspector]
+    public int unlocked_map = 0;
+
+    [HideInInspector]
+    public int  cur_map;
+
+	[SerializeField]
+    private List<GameObject> _available_map = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {

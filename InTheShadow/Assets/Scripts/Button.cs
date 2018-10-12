@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Button : MonoBehaviour {
 
+    private enum type{
+        nav,
+        game,
+        map
+    }
+
     [SerializeField]
 	private AudioClip clickSound;
 
 
     [SerializeField]
-    private Animator _sc_Animator;
+    private SceneManager _sc;
 
     [SerializeField]
     private string _trigger;
@@ -17,7 +23,11 @@ public class Button : MonoBehaviour {
 	private AudioSource audio;
 	private Animator anime;
 
+    [SerializeField]
+    private type _type;
 
+    [SerializeField]
+    private int value;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +49,14 @@ public class Button : MonoBehaviour {
 
     public void animation_finised()
     {
-        _sc_Animator.SetTrigger(_trigger);
+        _sc.GetComponent<Animator>().SetTrigger(_trigger);
+        if (_type == type.game)
+        {
+            _sc.gameMode = (SceneManager.GameMode)value;
+        }
+        else if (_type == type.map)
+        {
+            _sc.cur_map = value;   
+        }
     }
 }
