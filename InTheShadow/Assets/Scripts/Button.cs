@@ -11,6 +11,9 @@ public class Button : MonoBehaviour {
     [SerializeField]
     private Animator _sc_Animator;
 
+    [SerializeField]
+    private string _trigger;
+
 	private AudioSource audio;
 	private Animator anime;
 
@@ -36,6 +39,6 @@ public class Button : MonoBehaviour {
 
     public void animation_finised()
     {
-        _sc_Animator.SetTrigger("Selection");
+        _sc_Animator.SetTrigger(_trigger);
     }
 }
