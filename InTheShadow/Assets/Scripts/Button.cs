@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Button : MonoBehaviour {
 
-	public AudioClip clickSound;
+    [SerializeField]
+	private AudioClip clickSound;
+
+
+    [SerializeField]
+    private Animator _sc_Animator;
+
 	private AudioSource audio;
 	private Animator anime;
+
 
 
 	// Use this for initialization
@@ -26,4 +33,9 @@ public class Button : MonoBehaviour {
 		audio.Play();
 		anime.SetTrigger ("click");
 	}
+
+    public void animation_finised()
+    {
+        _sc_Animator.SetTrigger("Selection");
+    }
 }

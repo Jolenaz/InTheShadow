@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4386677943266518}
+  - component: {fileID: 114876011046242842}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -123,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995920417142934}
   m_LocalRotation: {x: -0, y: 0.11016795, z: -0, w: 0.993913}
-  m_LocalPosition: {x: -13.1, y: -23.71, z: -103.159515}
+  m_LocalPosition: {x: -63.8, y: -23.71, z: -175.6}
   m_LocalScale: {x: 5.475007, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4386677943266518}
@@ -182,3 +183,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114876011046242842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436480963081004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1e01ec5d42246e0ab2ecd0d3e3ba1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera_pos: {fileID: 1995920417142934}
