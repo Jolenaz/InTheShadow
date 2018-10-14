@@ -10,8 +10,8 @@ public class Button : MonoBehaviour {
         map
     }
 
-    [SerializeField]
-	private AudioClip clickSound;
+    public Material normal;
+    public Material finished;
 
 
     [SerializeField]
@@ -29,11 +29,24 @@ public class Button : MonoBehaviour {
     [SerializeField]
     private int value;
 
+    [SerializeField]
+    private MeshRenderer _mr;
+
+    public void setMaterial(string val)
+    {
+        if (val == "normal")
+            _mr.material = normal;
+        else if (val == "finished")
+            _mr.material = finished;
+        else
+            Debug.Log("run fool");
+
+    }
+
 	// Use this for initialization
 	void Start () {
 		audio = GetComponent<AudioSource>();
 		anime = GetComponent<Animator> ();
-		audio.clip = clickSound;
 	}
 	
 	// Update is called once per frame
@@ -58,5 +71,13 @@ public class Button : MonoBehaviour {
         {
             _sc.cur_map = value;   
         }
+    }
+
+
+    public void PlayParticle()
+    {
+        var pt = GetComponent<ParticleSystem>();
+        if (pt)
+            pt.Play();
     }
 }

@@ -6,6 +6,9 @@ public class SelectMap : MonoBehaviour {
 
 
     [SerializeField]
+    private AudioSource _as;
+
+    [SerializeField]
     private SceneManager _sc;
 
 
@@ -24,21 +27,25 @@ public class SelectMap : MonoBehaviour {
 
 	void OnEnable()
 	{
+        if (_sc.get_unlocked_map() > 0)
+            _as.Play();
         for (int i = 0; i < _buttons.Count; i++)
         {
-            if (i < _sc.unlocked_map)
+            if (i < _sc.get_unlocked_map())
             {
                 _buttons[i].SetActive(true);
-                _buttons[i].transform.localScale = 10.0f * _buttons[i].transform.localScale;
+                var bt = _buttons[i].GetComponent<Button>();
+                bt.setMaterial("finished");
+                bt.GetComponent<Animator>().SetTrigger("unlocked");
             }
-            else if (i > _sc.unlocked_map)
+            else if (i > _sc.get_unlocked_map())
             {
                 _buttons[i].SetActive(false);
             }
             else
             {
                 _buttons[i].SetActive(true);
-
+                _buttons[i].GetComponent<Button>().setMaterial("normal");
             }
         }
 	}

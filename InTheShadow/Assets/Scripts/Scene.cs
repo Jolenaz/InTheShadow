@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Scene : MonoBehaviour {
 
+
     public GameObject _camera_pos;
 
 	// Use this for initialization

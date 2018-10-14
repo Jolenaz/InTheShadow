@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour {
+public class SceneManager : MonoBehaviour
+{
 
 
-    public enum GameMode{
-        gm_new,
+    public enum GameMode
+    {
         gm_continue,
-        gm_teser        
+        gm_new,
+        gm_teser
     }
 
     [SerializeField]
@@ -18,10 +20,19 @@ public class SceneManager : MonoBehaviour {
     [SerializeField]
     private List<Scene> _scenes = new List<Scene>();
 
-    [HideInInspector]
-    public GameMode gameMode;
+    public GameMode gameMode = GameMode.gm_new;
 
     public int unlocked_map = 1;
+
+    public int get_unlocked_map()
+    {
+        if (gameMode == GameMode.gm_continue)
+            return unlocked_map;
+        else if (gameMode == GameMode.gm_new)
+            return 0;
+        return _available_map.Count;
+    }
+
 
     [HideInInspector]
     public int  cur_map;
@@ -31,7 +42,7 @@ public class SceneManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        unlocked_map = 1;
 	}
 	
 	// Update is called once per frame
