@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class spotInput : MonoBehaviour {
 
-	private void Start() {
-
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
-
-	}
-
     public bool isMovable = true;
+
+    [SerializeField]
+    private SceneManager _sc;
+
+    private void Start() {
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+    }
+
+
 
 	void get_object()
 	{
@@ -29,7 +34,7 @@ public class spotInput : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (!isMovable)
+        if (!isMovable || _sc.isMenu)
             return;
 		gameObject.transform.Rotate (
 			-Input.GetAxis ("Mouse Y") * 2,

@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour {
 
     public void moveSpote()
     {
-        _spot.transform.eulerAngles = new Vector3(-2,10,0);
+        _spot.transform.eulerAngles = new Vector3(-2,-10,0);
     }
 
 }

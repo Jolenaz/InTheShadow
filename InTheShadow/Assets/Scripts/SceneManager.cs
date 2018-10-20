@@ -13,9 +13,13 @@ public class SceneManager : MonoBehaviour
         gm_teser
     }
 
+    public bool isMenu = false;
+
     [SerializeField]
     private CameraManager _camera;
 
+    [SerializeField]
+    private GameObject _menuScene;
 
     [SerializeField]
     private List<Scene> _scenes = new List<Scene>();
@@ -33,6 +37,9 @@ public class SceneManager : MonoBehaviour
         return _available_map.Count;
     }
 
+    public void SetMenu(bool state){
+        _menuScene.SetActive(state);
+    }
 
     [HideInInspector]
     public int  cur_map;
@@ -47,7 +54,8 @@ public class SceneManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SetMenu(true);
 	}
 
     public void MoveCamera(int sc_index, bool active)
