@@ -37,10 +37,10 @@ public class MapScene : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!Cursor.visible){
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        //if (!Cursor.visible){
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
 
 	}
 }
