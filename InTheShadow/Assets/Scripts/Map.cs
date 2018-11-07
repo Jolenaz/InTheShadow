@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Map : MonoBehaviour {
 
-    private bool _horiz;
+    public int complexity = 2;
 
-    private bool _isFocus;
+    private bool _horiz = false;
+
+    private bool _isFocus = false;
+
+    private bool _translate = false;
 
     public GameObject lightMap;
 
@@ -14,19 +18,57 @@ public class Map : MonoBehaviour {
 
     private SceneManager _sc;
 
+    public Transform posTransform;
+
+    public float maxAngle;
+
+    public Vector3 soluce1;
+    public Vector3 soluce2;
+
 	// Use this for initialization
 	void Start () {
         _sc = GameObject.Find("SceneManager").GetComponent<SceneManager>();
     }
 
+	private void OnEnable()
+	{
+        if (complexity > 1)
+        {
+            transform.eulerAngles = (new Vector3(
+                Random.Range(-100, 100),
+                Random.Range(-100, 100),
+                Random.Range(-100, 100)
+            ));
+        }
+        else{
+            gameObject.transform.Rotate(
+               Vector3.right,
+                Random.Range(-100, 100),
+               Space.World
+           );
+        }
+	}
+
 	// Update is called once per frame
 	void Update () {
         if (_sc.isMenu)
             return;
+        if (Input.GetKeyDown(KeyCode.Space))
+            printAngle();
         if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
             _horiz = true;
+            _translate = false;
+        }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
             _horiz = false;
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            _translate = true;
+            _horiz = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+            _translate = false;
         if (Input.GetMouseButtonDown(0))
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -47,7 +89,7 @@ public class Map : MonoBehaviour {
             Cursor.lockState = CursorLockMode.None;
             _isFocus = false;
         }
-		if (_isFocus && _horiz)
+        if (_isFocus && _horiz && complexity > 1 && !_translate)
 		{
             gameObject.transform.Rotate(
                 Vector3.up,
@@ -56,6 +98,14 @@ public class Map : MonoBehaviour {
             );
             check_pos();
 		}
+        else if (_isFocus && _translate && complexity > 2 && !_horiz)
+        {
+            gameObject.transform.Translate(new Vector3(
+                Input.GetAxis("Mouse X"),
+                Input.GetAxis("Mouse Y"),
+                0
+            ),Space.World);
+        }
 		else if (_isFocus)
 		{
 			gameObject.transform.Rotate(
@@ -69,13 +119,28 @@ public class Map : MonoBehaviour {
 
     private void check_pos()
     {
-        if (
-            (transform.eulerAngles.x - 5) % 360 < 7 &&
-            (transform.eulerAngles.y + 10) % 180 < 7 &&
-            transform.eulerAngles.z % 360 < 7
-        )
+        if (getAngle(soluce1) || getAngle(soluce2))
             isFinished = true;
         else
             isFinished = false;
+    }
+
+    private bool getAngle(Vector3 soluce)
+    {
+        if ( Mathf.Abs(Vector3.Angle(posTransform.right, transform.right) - soluce.x ) > maxAngle)
+            return false;
+        if (Mathf.Abs(Vector3.Angle(posTransform.up, transform.up) - soluce.y) > maxAngle)
+            return false;
+        if (Mathf.Abs(Vector3.Angle(posTransform.forward, transform.forward) - soluce.z) > maxAngle)
+            return false;
+        return true;
+    }
+
+    private void printAngle()
+    {
+        //Debug.Log(gameObject.name);
+        //Debug.Log("right : " + Vector3.Angle(posTransform.right, transform.right));
+        //Debug.Log("forward : " + Vector3.Angle(posTransform.forward, transform.forward));
+        //Debug.Log("up : " + Vector3.Angle(posTransform.up, transform.up));
     }
 }

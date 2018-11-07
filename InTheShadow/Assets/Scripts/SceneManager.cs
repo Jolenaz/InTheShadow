@@ -37,8 +37,9 @@ public class SceneManager : MonoBehaviour
         return _available_map.Count;
     }
 
-    public void SetMenu(bool state){
-        _menuScene.SetActive(state);
+    public void SetMenu(){
+        isMenu = !isMenu;
+        _menuScene.SetActive(isMenu);
     }
 
     [HideInInspector]
@@ -55,7 +56,7 @@ public class SceneManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
-            SetMenu(true);
+            SetMenu();
 	}
 
     public void MoveCamera(int sc_index, bool active)
