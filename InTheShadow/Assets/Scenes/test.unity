@@ -382,10 +382,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1226328897}
+  - {fileID: 962852264}
   - {fileID: 2061446864}
   - {fileID: 1027711985}
-  - {fileID: 962852264}
-  - {fileID: 1226328897}
   m_Father: {fileID: 959170730}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1025,6 +1025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Obj1: {fileID: 1519350658}
   Obj2: {fileID: 674923116}
+  map_id: 2
   objectif: {x: -6.5, y: -3, z: 37.5}
   maxDistance: 0.5
   isFinished: 0
@@ -1380,6 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complexity: 3
+  map_id: 0
   lightMap: {fileID: 1483497345}
   isFinished: 0
   posTransform: {fileID: 328322799}
@@ -2178,7 +2180,7 @@ RectTransform:
   m_Children:
   - {fileID: 104658303}
   m_Father: {fileID: 155563091}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2331,7 +2333,7 @@ RectTransform:
   m_Children:
   - {fileID: 914930731}
   m_Father: {fileID: 155563091}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2753,7 +2755,7 @@ RectTransform:
   m_Children:
   - {fileID: 217084556}
   m_Father: {fileID: 155563091}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3230,7 +3232,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1519350656}
-  m_LocalRotation: {x: -0.5835427, y: 0.0009382662, z: 0.5851693, w: -0.56307536}
+  m_LocalRotation: {x: -0.58354276, y: 0.0009382662, z: 0.5851694, w: -0.5630754}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3250,6 +3252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complexity: 3
+  map_id: 0
   lightMap: {fileID: 765981651}
   isFinished: 0
   posTransform: {fileID: 59123314}
@@ -3806,6 +3809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complexity: 1
+  map_id: 0
   lightMap: {fileID: 653096031}
   isFinished: 0
   posTransform: {fileID: 697693163}
@@ -3886,6 +3890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   complexity: 2
+  map_id: 1
   lightMap: {fileID: 27588135}
   isFinished: 0
   posTransform: {fileID: 894069525}
@@ -4167,7 +4172,7 @@ RectTransform:
   m_Children:
   - {fileID: 1547122212}
   m_Father: {fileID: 155563091}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}

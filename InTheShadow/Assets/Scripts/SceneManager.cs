@@ -26,7 +26,7 @@ public class SceneManager : MonoBehaviour
 
     public GameMode gameMode = GameMode.gm_new;
 
-    public int unlocked_map = 1;
+    public int unlocked_map;
 
     public int get_unlocked_map()
     {
@@ -35,6 +35,12 @@ public class SceneManager : MonoBehaviour
         else if (gameMode == GameMode.gm_new)
             return 0;
         return _available_map.Count;
+    }
+
+    public void set_unlocked_map(int value)
+    {
+        unlocked_map = value;
+        PlayerPrefs.SetInt("unlocked_map", value);
     }
 
     public void SetMenu(){
@@ -50,8 +56,12 @@ public class SceneManager : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-        unlocked_map = 1;
+        if (PlayerPrefs.HasKey("unlocked_map"))
+            unlocked_map = PlayerPrefs.GetInt("unlocked_map");
+        else
+            set_unlocked_map(0);
 	}
+
 	
 	// Update is called once per frame
 	void Update () {

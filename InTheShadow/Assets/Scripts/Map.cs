@@ -6,6 +6,9 @@ public class Map : MonoBehaviour {
 
     public int complexity = 2;
 
+    [SerializeField]
+    private int map_id;
+
     private bool _horiz = false;
 
     private bool _isFocus = false;

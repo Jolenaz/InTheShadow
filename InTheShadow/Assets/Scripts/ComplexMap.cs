@@ -7,6 +7,9 @@ public class ComplexMap : MonoBehaviour {
     public Map Obj1;
     public Map Obj2;
 
+    [SerializeField]
+    private int map_id;
+
     public Vector3 objectif;
 
     public float maxDistance;
