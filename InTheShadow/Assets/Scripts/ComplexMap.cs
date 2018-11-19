@@ -8,6 +8,12 @@ public class ComplexMap : MonoBehaviour {
     public Map Obj2;
 
     [SerializeField]
+    private SceneManager _sc;
+
+    [SerializeField]
+    private GameObject _congratMap;
+
+    [SerializeField]
     private int map_id;
 
     public Vector3 objectif;
@@ -24,12 +30,7 @@ public class ComplexMap : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (getDistance() && Obj1.isFinished && Obj2.isFinished)
-        {
-            isFinished = true;
-            Debug.Log("Dragon finished");
-        }
-        else
-            isFinished = false;
+            finisedMap();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -46,5 +47,16 @@ public class ComplexMap : MonoBehaviour {
         if (Mathf.Abs(Obj1.transform.position.z - Obj2.transform.position.z - objectif.z) > maxDistance)
             return false;
         return true;
+    }
+
+    public void finisedMap()
+    {
+        isFinished = true;
+        _sc.set_unlocked_map(map_id + 1);
+        _congratMap.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Obj1.closeMap();
+        Obj2.closeMap();
     }
 }

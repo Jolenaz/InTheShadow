@@ -15,15 +15,6 @@ public class SelectMap : MonoBehaviour {
     [SerializeField]
     private List<GameObject> _buttons = new List<GameObject>();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void OnEnable()
 	{

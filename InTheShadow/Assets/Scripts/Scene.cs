@@ -5,15 +5,13 @@ using UnityEngine;
 public class Scene : MonoBehaviour {
 
 
+    public GameObject congratScene;
+
     public GameObject _camera_pos;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	private void OnEnable()
+	{
+        if (congratScene)
+            congratScene.SetActive(false);
 	}
 }

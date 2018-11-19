@@ -15,6 +15,8 @@ public class SceneManager : MonoBehaviour
 
     public bool isMenu = false;
 
+    public bool isCongrat = false;
+
     [SerializeField]
     private CameraManager _camera;
 
@@ -65,7 +67,7 @@ public class SceneManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isCongrat)
             SetMenu();
 	}
 
@@ -82,7 +84,11 @@ public class SceneManager : MonoBehaviour
             _scenes[sc_index].gameObject.SetActive(false);
 
         }
-        
+    }
+
+    public void QuitGamet()
+    {
+        Application.Quit();
     }
 
 }

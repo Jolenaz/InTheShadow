@@ -17,7 +17,12 @@ public class Map : MonoBehaviour {
 
     public GameObject lightMap;
 
+    [SerializeField]
+    private GameObject _congratMap;
+
     public bool isFinished;
+
+    public bool isLocked;
 
     private SceneManager _sc;
 
@@ -35,6 +40,8 @@ public class Map : MonoBehaviour {
 
 	private void OnEnable()
 	{
+        isFinished = false;
+        isLocked = false;
         if (complexity > 1)
         {
             transform.eulerAngles = (new Vector3(
@@ -54,7 +61,7 @@ public class Map : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (_sc.isMenu)
+        if (_sc.isMenu || isLocked)
             return;
         if (Input.GetKeyDown(KeyCode.Space))
             printAngle();
@@ -108,6 +115,7 @@ public class Map : MonoBehaviour {
                 Input.GetAxis("Mouse Y"),
                 0
             ),Space.World);
+            check_pos();
         }
 		else if (_isFocus)
 		{
@@ -123,7 +131,7 @@ public class Map : MonoBehaviour {
     private void check_pos()
     {
         if (getAngle(soluce1) || getAngle(soluce2))
-            isFinished = true;
+            finisedMap();
         else
             isFinished = false;
     }
@@ -139,11 +147,33 @@ public class Map : MonoBehaviour {
         return true;
     }
 
+    public void finisedMap()
+    {
+		isFinished = true;
+        if (complexity < 3)
+        {
+            _sc.set_unlocked_map(map_id + 1);
+            _congratMap.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            closeMap();
+        }
+    }
+
+    public void closeMap()
+    {
+        isLocked = true;
+        lightMap.SetActive(false);
+        _isFocus = false;
+        _translate = false;
+        _horiz = false;
+    }
+
     private void printAngle()
     {
-        //Debug.Log(gameObject.name);
-        //Debug.Log("right : " + Vector3.Angle(posTransform.right, transform.right));
-        //Debug.Log("forward : " + Vector3.Angle(posTransform.forward, transform.forward));
-        //Debug.Log("up : " + Vector3.Angle(posTransform.up, transform.up));
+        Debug.Log(gameObject.name);
+        Debug.Log("right : " + Vector3.Angle(posTransform.right, transform.right));
+        Debug.Log("up : " + Vector3.Angle(posTransform.up, transform.up));
+		Debug.Log("forward : " + Vector3.Angle(posTransform.forward, transform.forward));
     }
 }
