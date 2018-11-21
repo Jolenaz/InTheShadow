@@ -34,7 +34,7 @@ public class ComplexMap : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(Obj1.transform.position - Obj2.transform.position );
+            finisedMap();
         }
 	}
 

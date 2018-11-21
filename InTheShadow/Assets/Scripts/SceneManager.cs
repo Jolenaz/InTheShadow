@@ -35,7 +35,10 @@ public class SceneManager : MonoBehaviour
         if (gameMode == GameMode.gm_continue)
             return unlocked_map;
         else if (gameMode == GameMode.gm_new)
+        {
+            set_unlocked_map(0);
             return 0;
+        }
         return _available_map.Count;
     }
 
